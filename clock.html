@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+     <h1>Digital clock</h1>
+
+     <div class="container">
+         <div id="hour"></div>
+         <div id="minute"></div>
+         <div id="second"></div>
+         <div id="dayandnight">AM</div>
+     </div>
+    
+
+     <script>
+         var hours = document.getElementById("hour");
+         var minutes = document.getElementById("minute");
+         var seconds = document.getElementById("second");
+         var dayandnight = document.getElementById("dayandnight");
+         function updateclock(){
+        var exacttime = new Date();
+        var hr = exacttime.getHours();
+        var cond = exacttime.getHours() -12;
+        var min = exacttime.getMinutes();
+        var sc = exacttime.getSeconds();
+        
+        if(hr>12){
+            dayandnight.innerHTML ="PM";
+            hours.innerHTML = ((cond<10)?"0"+cond :cond)+" :" ;
+               
+        }
+        else
+        {
+            dayandnight.innerHTML ="AM";
+            hours.innerHTML = (cond<10)?"0"+cond :cond ;
+        }
+
+        minutes.innerHTML =((min<10)?"0"+min :min)+" :";
+        seconds.innerHTML =(sc<10)?"0"+sc :sc;
+
+
+     }
+ setInterval(updateclock,1000)
+
+ updateclock();
+     </script>
+</body>
+</html>
